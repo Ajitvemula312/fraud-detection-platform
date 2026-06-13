@@ -1,0 +1,135 @@
+:root {
+  color: #f7efe3;
+  background:
+    radial-gradient(circle at top left, rgba(214, 137, 16, 0.24), transparent 25%),
+    linear-gradient(180deg, #12202b 0%, #0b141c 100%);
+  font-family: "Avenir Next", "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.shell {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 32px 20px 48px;
+}
+
+.hero {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: end;
+}
+
+.eyebrow {
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #ffb067;
+  font-size: 0.74rem;
+}
+
+h1 {
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  line-height: 0.92;
+  letter-spacing: -0.05em;
+  margin: 0;
+}
+
+.body {
+  color: #c6d1da;
+  max-width: 540px;
+}
+
+.status, .metric-card, .panel {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  border-radius: 24px;
+}
+
+.status {
+  padding: 18px 22px;
+  min-width: 220px;
+}
+
+.status span, .metric-card span {
+  display: block;
+  color: #c6d1da;
+}
+
+.status strong, .metric-card strong {
+  display: block;
+  margin-top: 10px;
+  font-size: 1.8rem;
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.metric-card {
+  padding: 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 18px;
+}
+
+.panel {
+  padding: 20px;
+}
+
+.event-card {
+  border-radius: 18px;
+  padding: 14px;
+  margin-bottom: 12px;
+  background: rgba(0, 0, 0, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.event-card.high {
+  border-left: 4px solid #ff6b4a;
+}
+
+.event-card.medium {
+  border-left: 4px solid #ffb067;
+}
+
+.event-card.low {
+  border-left: 4px solid #76c893;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.tag {
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(255, 176, 103, 0.16);
+  color: #ffb067;
+  font-size: 0.76rem;
+}
+
+@media (max-width: 900px) {
+  .hero,
+  .grid,
+  .metrics {
+    grid-template-columns: 1fr;
+    display: grid;
+  }
+}
+

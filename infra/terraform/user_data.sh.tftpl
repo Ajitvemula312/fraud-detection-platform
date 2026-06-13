@@ -1,0 +1,11 @@
+#!/bin/bash
+set -eux
+apt-get update
+apt-get install -y git docker.io docker-compose-plugin python3-pip
+systemctl enable docker
+systemctl start docker
+cd /opt
+git clone "${repo_url}" fraud-platform
+cd fraud-platform
+docker compose -f infra/docker/docker-compose.yml up -d --build
+

@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fraud-platform"
+version = "0.1.0"
+description = "Real-time streaming fraud detection platform with demo-friendly local workflows."
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "Codex" }]
+dependencies = [
+  "joblib>=1.3",
+  "numpy>=1.26",
+  "pandas>=2.0",
+  "pydantic>=2.0",
+  "scikit-learn>=1.4",
+]
+
+[project.optional-dependencies]
+api = [
+  "fastapi>=0.115",
+  "uvicorn>=0.30",
+]
+demo = [
+  "streamlit>=1.38",
+]
+tracking = [
+  "mlflow>=2.16",
+]
+streaming = [
+  "kafka-python>=2.0",
+  "pyspark>=3.5",
+]
+model = [
+  "xgboost>=2.1",
+]
+cloud = [
+  "boto3>=1.35",
+]
+dev = []
+
+[tool.setuptools]
+package-dir = { "" = "services/fraud_platform/src" }
+
+[tool.setuptools.packages.find]
+where = ["services/fraud_platform/src"]
