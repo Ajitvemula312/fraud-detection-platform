@@ -2,7 +2,7 @@
 
 An end-to-end fraud detection repo built for both portfolio depth and recruiter demos. The platform combines model training, experiment tracking, real-time event simulation, drift detection, automated retraining, browser-based monitoring, and deployable infrastructure scaffolding.
 
-## What This Repo Includes
+## This Repo Includes
 
 - `services/fraud_platform`: Python backend package for preprocessing, model training, drift detection, streaming simulation, registry/state management, and FastAPI integration.
 - `apps/python_dashboard`: A zero-extra-dependency Python dashboard for live recruiter demos on machines without Node.
@@ -35,16 +35,6 @@ Kafka Producer ---> Kafka Topic ---> PySpark Structured Streaming
                                     FastAPI / Python Dashboard / React UI
 ```
 
-## Current Environment Notes
-
-As checked on June 14, 2026 in this workspace:
-
-- `python3` is installed.
-- `pandas`, `scikit-learn`, `joblib`, and `pydantic` are available.
-- `docker`, `java`, `node`, `npm`, `fastapi`, `uvicorn`, `mlflow`, `streamlit`, and `xgboost` are not currently installed.
-
-That means the repo already supports a real Python-first demo path locally, while the strict FastAPI/Kafka/Spark/React/Docker path becomes available after installing the optional dependencies.
-
 ## Project Structure
 
 ```text
@@ -61,55 +51,20 @@ services/
 tests/
 ```
 
-## Dataset Strategy
+## Dataset
 
-Primary dataset target:
+Primary dataset:
 
 - Kaggle Credit Card Fraud Detection dataset: `creditcard.csv`
 
-Expected location:
+Location:
 
 - `data/raw/creditcard.csv`
 
-If the public dataset is not present, the repo can still train and demo using the packaged synthetic smoke-test workflow. The enrichment layer adds recruiter-friendly fields such as:
 
-- `merchant_category`
-- `transaction_type`
-- `region`
-- `account_age_days`
-- `previous_txn_count`
-- `avg_spend_rolling`
-- `amount_to_avg_ratio`
-- `txn_velocity_score`
-- `risk_aggregation_score`
-
-## Commands
-
-```bash
-make prereqs
-make data
-make train
-make reset-demo
-make stream-demo
-make demo-ui
-make test
-```
-
-Strict-stack commands:
-
-```bash
-make bootstrap
-make api
-make up
-make react-ui
-make deploy-aws
-```
-
-## How To Operate The Repo
+## Operating The Repo
 
 ### 1. Quick local demo with current machine
-
-This is the best path for showing recruiters something live right now.
 
 Terminal 1:
 
@@ -133,13 +88,6 @@ Then open:
 
 - `http://localhost:8501`
 
-What you will see:
-
-- Recent scored transactions
-- High-risk fraud predictions
-- Drift alerts
-- Current model metrics
-- Retraining timestamps when drift thresholds trigger
 
 If you want a clean slate before repeating the demo:
 
@@ -210,81 +158,8 @@ make bootstrap
 make up
 ```
 
-This repo includes:
 
-- Kafka and ZooKeeper container definitions
-- MLflow service definition
-- API container
-- Python dashboard container
-- PySpark streaming job scaffold in `services/fraud_platform/src/fraud_platform/streaming/spark_job.py`
-
-## Live Recruiter Demo Script
-
-Use this 5- to 10-minute flow:
-
-### Part 1: Start with the problem
-
-Say:
-
-“Fraud systems fail when they score too late. This repo shows how to move from offline training into an event-driven architecture that can score transactions in near real time, detect drift, and trigger retraining.”
-
-### Part 2: Show the training pipeline
-
-Run:
-
-```bash
-make train
-```
-
-Mention:
-
-- Public Kaggle dataset support
-- Enrichment into business-facing features
-- Baselines plus XGBoost path
-- Artifact persistence and registry promotion
-
-### Part 3: Show the live stream
-
-Run:
-
-```bash
-make stream-demo
-```
-
-Explain:
-
-- Each event is scored with the current model
-- Risk levels are assigned immediately
-- Drift is tracked with CUSUM over amount and behavioral features
-- Retraining is triggered when alerts accumulate
-
-### Part 4: Show the dashboard
-
-Open:
-
-- `http://localhost:8501`
-
-Narrate:
-
-- left side shows recent scored transactions
-- right side shows drift events
-- top metrics show model and system health
-- retraining timestamps prove the monitoring loop is closed
-
-### Part 5: Close with production depth
-
-Point to:
-
-- `apps/react_dashboard`
-- `infra/docker`
-- `infra/terraform`
-- `services/fraud_platform/src/fraud_platform/streaming/spark_job.py`
-
-Say:
-
-“Locally I’m showing the recruiter-safe Python demo surface, but the repo is structured to extend to FastAPI, Kafka, Spark, React, Docker, and AWS deployment.”
-
-## Example Prediction Payload
+## Prediction Payload
 
 ```json
 {
@@ -348,18 +223,3 @@ Run:
 ```bash
 make test
 ```
-
-Coverage in this repo focuses on:
-
-- data enrichment
-- drift detection
-- training and registry creation
-- local end-to-end stream simulation
-
-## Next Recommended Steps
-
-1. Install `fastapi` and `uvicorn`, then run `make api`.
-2. Install `xgboost` to unlock the intended champion model path.
-3. Install Docker and Java to run the Kafka and Spark stack.
-4. Install Node and npm to launch the React dashboard.
-5. Replace the sample data flow with the Kaggle dataset before a serious demo or submission.
