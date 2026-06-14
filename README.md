@@ -1,6 +1,6 @@
 # Real-Time Streaming Fraud Detection Platform
 
-An end-to-end fraud detection repo built for both portfolio depth and recruiter demos. The platform combines model training, experiment tracking, real-time event simulation, drift detection, automated retraining, browser-based monitoring, and deployable infrastructure scaffolding.
+An end-to-end fraud detection platform. The platform combines model training, experiment tracking, real-time event simulation, drift detection, automated retraining, browser-based monitoring, and deployable infrastructure scaffolding.
 
 ## This Repo Includes
 
@@ -94,6 +94,10 @@ If you want a clean slate before repeating the demo:
 ```bash
 make reset-demo
 ```
+
+
+<img width="1418" height="1036" alt="RT-fraud_detection_SS" src="https://github.com/user-attachments/assets/f891853c-2e3a-4d75-a231-1a108c2ff97d" />
+
 
 ### 2. Public dataset training flow
 
